@@ -51,16 +51,15 @@ export const App: React.FC = () => {
 
   const handleSubmitForm = (e: React.FormEvent) => {
     e.preventDefault();
-    // if (!todoTitle.trim()) {
-    //   setTitleError(true);
-    //   // return;
-    // }
-    // if (!checkedUserId) {
-    //   setUserError(true);
-    //   // return;
-    // }
-    setTitleError(!todoTitle.trim());
-    setUserError(!checkedUserId);
+    if (!todoTitle.trim()) {
+      setTitleError(true);
+    }
+
+    if (!checkedUserId) {
+      setUserError(true);
+    }
+    // setTitleError(!todoTitle.trim());
+    // setUserError(!checkedUserId);
 
     if (!todoTitle.trim() || !checkedUserId) {
       return;
