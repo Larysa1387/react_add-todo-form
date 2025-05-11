@@ -51,7 +51,9 @@ export const App: React.FC = () => {
 
   const handleSubmitForm = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!todoTitle.trim()) {
+    const cleanTitle = todoTitle.trim();
+
+    if (!cleanTitle) {
       setTitleError(true);
     }
 
@@ -61,7 +63,7 @@ export const App: React.FC = () => {
     // setTitleError(!todoTitle.trim());
     // setUserError(!checkedUserId);
 
-    if (!todoTitle.trim() || !checkedUserId) {
+    if (!cleanTitle || !checkedUserId) {
       return;
     }
 
@@ -69,7 +71,7 @@ export const App: React.FC = () => {
       ...prevTodos,
       {
         id: maxTodoId(todos),
-        title: todoTitle,
+        title: cleanTitle,
         completed: false,
         userId: checkedUserId,
         user: getUser(checkedUserId),
